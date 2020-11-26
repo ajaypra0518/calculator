@@ -114,28 +114,69 @@
     </div>
 
     <script>
-        var a, b, c, d, e, f, g, h, i, j,k;
+        var a, b, c, d, e, f, g, h, i, j, k, flag = 0;
+
 
         function insert(num) {
-            a = document.getElementById("text-feild").value += num;
-            // handle negative starting value
-            if(a.charAt(0)=="-")
-            {
-                var k=a.charAt(0);
-                a=a.substring(1)
+
+            //after equal press if operator then print other wise replace with new operand
+            if (flag == 1) {
+                if (num != "+" && num != "-" && num != "*" && num != "/") {
+                    document.getElementById("text-feild").value = "";
+                }
+                flag = 0;
             }
-             // handle negative starting value
-          
+             //after equal if operator then print other wise replace
+
+
+            a = document.getElementById("text-feild").value += num;  // main input
+
+
+
+            // handle * or / in starting value
+            if ((a.charAt(0) == "*") || (a.charAt(0) == "/")) {
+                document.getElementById("text-feild").value = "";
+
+            }
+            // handle * or / in starting value
+
+
+            if ((a.charAt(0) == "-") || (a.charAt(0) == "+")) {
+
+                if (a.charAt(1) == "+") {
+                    document.getElementById("text-feild").value = a.charAt(1);
+                }
+                if(a.charAt(1)=="-"){
+                    document.getElementById("text-feild").value = a.charAt(0);
+                }
+
+                if ((a.charAt(1) == "*") || (a.charAt(1) == "/")) {
+                    document.getElementById("text-feild").value = a.substring(0, a.length - 1);
+
+                }
+
+
+            }
+
+
+
+            // handle negative starting value
+            if (a.charAt(0) == "-") {
+                var k = a.charAt(0);
+                a = a.substring(1)
+            }
+            // handle negative starting value
+
             console.log(a)
             b = a.search("[/+]|[/-]|[/*]|[//]");
             e = a.substring(0, b);
             c = a.charAt(b);
             console.log(e);
             console.log(c);
-    
-        
 
-            if ((a.charAt(b + 1) == "+") || (a.charAt(b + 1) == "-") || (a.charAt(b + 1) == "*") || (a.charAt(b + 1) == "/") || (a.charAt(b + 1) == ".")) {
+
+
+            if ((a.charAt(b + 1) == "+") || (a.charAt(b + 1) == "-") || (a.charAt(b + 1) == "*") || (a.charAt(b + 1) == "/")) {
                 var x1 = (a.charAt(b + 1));
                 var x2 = a.substring(0, a.length - 2);
                 document.getElementById("text-feild").value = x2 + x1;
@@ -152,14 +193,13 @@
             // j = e + c + h;
             // console.log(j);
 
-            if (e != "" && c != "" && h != ""  && k!=="-") 
-            {
+            if (e != "" && c != "" && h != "" && k !== "-") {
 
                 if (c == "+") {
                     var num = Number(e) + Number(h);
                     mycalc(num)
                 }
-                
+
 
                 else if (c == "-") {
                     var num = Number(e) - Number(h);
@@ -176,18 +216,18 @@
                 }
             }
 
-             else if(e != "" && c!==""  &&  h!=="" && k=="-") {
-                    var j=document.getElementById("text-feild").value
-                    j=j.substring(0,j.length-1);
-                    var num = eval(j);
-                    var n = num.toString();
-                    var z = n + i;
-                    // console.log(num);
-                    // console.log(z);
-                    document.getElementById("text-feild").value = z;
-                    a = z;
-                }
+            else if (e != "" && c !== "" && h !== "" && k == "-") {
+                var j = document.getElementById("text-feild").value
+                j = j.substring(0, j.length - 1);
+                var num = eval(j);
+                var n = num.toString();
+                var z = n + i;
+                // console.log(num);
+                // console.log(z);
+                document.getElementById("text-feild").value = z;
+                a = z;
             }
+        }
 
         function mycalc(num) {
             var n = num.toString();
@@ -205,12 +245,13 @@
             var x = document.getElementById("text-feild").value
             var y = eval(x)
             document.getElementById("text-feild").value = y
+            flag = 1;
         }
         function back() {
             var x = document.getElementById("text-feild").value
             document.getElementById("text-feild").value = x.substring(0, x.length - 1)
         }
-        
+
     </script>
 </body>
 
