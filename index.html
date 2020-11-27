@@ -121,7 +121,8 @@
 
             //after equal press if operator then print other wise replace with new operand
             if (flag == 1) {
-                if (num != "+" && num != "-" && num != "*" && num != "/" ) {
+                debugger;
+                if (num != "+" && num != "-" && num != "*" && num != "/" && num == "." ) {
                     document.getElementById("text-feild").value = "";
                 }
                 flag = 0;
@@ -131,6 +132,12 @@
 
             a = document.getElementById("text-feild").value += num;  // main input
 
+             // handle negative starting value
+             if (a.charAt(0) == "-" ||(a.charAt(0) == "+")){
+                var k = a.charAt(0);
+                a = a.substring(1)
+            }
+            // handle negative starting value
 
 
             // handle * or / in starting value
@@ -159,13 +166,6 @@
             }
 
 
-
-            // handle negative starting value
-            if (a.charAt(0) == "-") {
-                var k = a.charAt(0);
-                a = a.substring(1)
-            }
-            // handle negative starting value
 
             console.log(a)
             b = a.search("[/+]|[/-]|[/*]|[//]");
