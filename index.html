@@ -121,8 +121,7 @@
 
             //after equal press if operator then print other wise replace with new operand
             if (flag == 1) {
-                debugger;
-                if (num != "+" && num != "-" && num != "*" && num != "/" && num == "." ) {
+                if (num != "+" && num != "-" && num != "*" && num != "/"  && num == ".") {
                     document.getElementById("text-feild").value = "";
                 }
                 flag = 0;
@@ -132,12 +131,15 @@
 
             a = document.getElementById("text-feild").value += num;  // main input
 
+
              // handle negative starting value
              if (a.charAt(0) == "-" ||(a.charAt(0) == "+")){
                 var k = a.charAt(0);
                 a = a.substring(1)
             }
             // handle negative starting value
+
+
 
 
             // handle * or / in starting value
@@ -164,6 +166,7 @@
 
 
             }
+
 
 
 
@@ -211,7 +214,7 @@
                     mycalc(num)
                 }
                 else if (c == "/") {
-                    var num = Number(e) / Number(h);
+                    var num = Number(e) * Number(h);
                     mycalc(num)
                 }
             }
