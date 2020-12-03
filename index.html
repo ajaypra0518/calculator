@@ -121,9 +121,14 @@
 
             //after equal press if operator then print other wise replace with new operand
             if (flag == 1) {
+            
                 if (num != "+" && num != "-" && num != "*" && num != "/"  && num == ".") {
                     document.getElementById("text-feild").value = "";
                 }
+                if(num==0||num==1|| num==2||num==3|| num==4||num==5|| num==6||num==7|| num==8)
+               {
+                document.getElementById("text-feild").value = "";
+               }
                 flag = 0;
             }
              //after equal if operator then print other wise replace
@@ -151,6 +156,7 @@
 
 
             if ((a.charAt(0) == "-") || (a.charAt(0) == "+")) {
+                debugger;
 
                 if (a.charAt(1) == "+") {
                     document.getElementById("text-feild").value = a.charAt(1);
